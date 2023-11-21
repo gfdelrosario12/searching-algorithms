@@ -9,9 +9,20 @@ public class BinarySearch {
         this.numberToBeSearched = numberToBeSearched;
     }
 
-    private boolean search() {
+    private boolean searchProcess() {
         Arrays.sort(this.dataSet);
-        int firstDivide = numberToBeSearched / this.dataSet[-1];
+        int low = 0;
+        int high = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (this.dataSet[mid] == numberToBeSearched) {
+                return true; // Target found, return the index
+            } else if (this.dataSet[mid] > numberToBeSearched) {
+                high = mid - 1; // Update the high index
+            } else {
+                low = mid + 1; // Update the low index
+            }
+        }
         return false;
     }
 }
